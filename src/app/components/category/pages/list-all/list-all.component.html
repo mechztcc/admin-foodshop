@@ -1,1 +1,33 @@
-<p>list-all works!</p>
+<div class="col-md-12 my-4">
+    <div class="col-md-12">
+        <div class="card shadow">
+            <div class="card-body">
+                <h3 class="card-title col-md-12">Categorias</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12 my-4">
+    <div class="col-md-12">
+        <div class="card shadow">
+            <div class="card-body">
+                <table class="table table-light">
+                    <thead>
+                        <tr>
+                            <td>Nome</td>
+                            <td>Total de Items</td>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let category of categories">
+                        <tr>
+                            <td>{{ category.name }}</td>
+                            <td> 7 </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Category } from '../../shared/category';
 import { CategoryService } from '../../shared/category.service';
 
 @Component({
@@ -8,10 +9,18 @@ import { CategoryService } from '../../shared/category.service';
 })
 export class ListAllComponent implements OnInit {
 
+
+  public categories: Category[] = []
+
   constructor(private categoryService: CategoryService) { }
 
   ngOnInit(): void {
-    this.categoryService.listAll().subscribe(console.log)
+    this.categoryService.listAll()
+      .subscribe((categories: Category[]) => {
+        this.categories = categories;
+        console.log(this.categories);
+        
+      })
   }
 
 }

@@ -1,5 +1,6 @@
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { NotifierService } from 'angular-notifier';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
@@ -7,19 +8,18 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class InterceptorService implements HttpInterceptor {
+
+  constructor(private notifierService: NotifierService) {}
+
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     console.log("Intercepting this");
     return next.handle(req)
       .pipe(
         catchError((error: HttpErrorResponse) => {
-          let errorMsg = ''
-          if(error.error instanceof ErrorEvent) {
-            errorMsg = `Algo deu errado ${error.error.message}`
-          } else {
-            errorMsg = `Erro novamente ${error.status}`
+          if(error.status == 404) {
+            this.notifierService.notify('error', 'Não foi possível estabelecer conexão com o servidor')
           }
-          window.alert(errorMsg)
-          return throwError(errorMsg)
+          return throwError(error.status)
         })
       )
   }
