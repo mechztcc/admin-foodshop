@@ -5,7 +5,7 @@ import { ListAllComponent } from './pages/list-all/list-all.component';
 
 const routes: Routes = [
   { path: '', component: ListAllComponent },
-  { path: 'editar', component: EditComponent },
+  { path: 'editar/:id', component: EditComponent },
 ];
 
 @NgModule({
