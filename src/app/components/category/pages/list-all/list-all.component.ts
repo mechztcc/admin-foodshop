@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Category } from '../../shared/category';
 import { CategoryService } from '../../shared/category.service';
 
-import { faPen, faTrash, } from '@fortawesome/free-solid-svg-icons';
+import { faPen, faTrash, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 
 @Component({
@@ -14,6 +14,7 @@ export class ListAllComponent implements OnInit {
 
   faPen = faPen;
   faTrash = faTrash;
+  faPlus = faPlus;
 
   public categories: Category[] = []
 
@@ -34,6 +35,10 @@ export class ListAllComponent implements OnInit {
 
   edit(productId: number) {
     this.router.navigate(['categorias/editar', productId])
+  }
+
+  toCreatePage() {
+    this.router.navigate(['/categorias/criar'])
   }
 
 }

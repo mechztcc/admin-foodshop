@@ -5,12 +5,14 @@ import { CategoryRoutingModule } from './category-routing.module';
 import { ListAllComponent } from './pages/list-all/list-all.component';
 import { EditComponent } from './pages/edit/edit.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CreateComponent } from './pages/create/create.component';
 
 
 @NgModule({
   declarations: [
     ListAllComponent,
-    EditComponent
+    EditComponent,
+    CreateComponent
   ],
   imports: [
     CommonModule,
