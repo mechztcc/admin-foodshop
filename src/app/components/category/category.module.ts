@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+
 import { CategoryRoutingModule } from './category-routing.module';
 import { ListAllComponent } from './pages/list-all/list-all.component';
 import { EditComponent } from './pages/edit/edit.component';
@@ -12,12 +13,19 @@ import { CreateComponent } from './pages/create/create.component';
   declarations: [
     ListAllComponent,
     EditComponent,
-    CreateComponent
+    CreateComponent,
+    
   ],
   imports: [
     CommonModule,
     CategoryRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+
+
+    
+
+
+    
   ]
 })
 export class CategoryModule { }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Category } from '../../shared/category';
 import { CategoryService } from '../../shared/category.service';
 
-import { faPen, faTrash, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faPen, faTrash, faPlus, faSpinner, faSync } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,6 +15,10 @@ export class ListAllComponent implements OnInit {
   faPen = faPen;
   faTrash = faTrash;
   faPlus = faPlus;
+  faSpinner = faSpinner;
+  faSync = faSync;
+
+  loading: boolean= false;
 
   public categories: Category[] = []
 
@@ -25,11 +29,12 @@ export class ListAllComponent implements OnInit {
   }
 
   categoriesInit() {
+    this.loading = !this.loading;
     this.categoryService.listAll()
       .subscribe((categories: Category[]) => {
         this.categories = categories;
-        console.log(this.categories);
-        
+      }).add(() => {
+        this.loading = !this.loading;
       })
   }
 

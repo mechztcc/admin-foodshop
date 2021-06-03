@@ -10,22 +10,31 @@ import { InterceptorService } from './core/interceptors/interceptor.service';
 import { NotifierModule } from 'angular-notifier';
 import { HeaderComponent } from './components/template/header/header.component';
 import { FooterComponent } from './components/template/footer/footer.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
+import { SpinnersAngularModule } from 'spinners-angular';
+
+
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserModule,
     NgbModule,
     HttpClientModule,
     NotifierModule,
-    FontAwesomeModule
+    // SpinnersAngularModule,
+
+
+  
+
+
   ],
   providers: [ InterceptorService, { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true}],
   bootstrap: [AppComponent]

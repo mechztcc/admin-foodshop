@@ -17,8 +17,8 @@
 
 <div class="col-md-12 my-4">
     <div class="col-md-12">
-        <div class="card shadow">
-            <div class="card-body">
+        <div class="card shadow" *ngIf="!loading else loader">
+            <div class="card-body" >
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -52,3 +52,13 @@
     </div>
 </div>
 
+
+
+
+<ng-template #loader>
+    <div class="col-md-12">
+        Loading...
+        
+        
+    </div>
+</ng-template>
