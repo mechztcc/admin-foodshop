@@ -12,11 +12,10 @@ export class InterceptorService implements HttpInterceptor {
   constructor(private notifierService: NotifierService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    console.log("Intercepting this");
     return next.handle(req)
       .pipe(
         catchError((error: HttpErrorResponse) => {
-          if(error.status == 404) {
+          if(error) {
             this.notifierService.notify('error', 'Não foi possível estabelecer conexão com o servidor')
           }
           return throwError(error.status)

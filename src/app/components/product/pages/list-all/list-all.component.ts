@@ -15,6 +15,8 @@ export class ListAllComponent implements OnInit {
   faPen = faPen;
   faTrash = faTrash;
 
+  loading: boolean = false;
+
   public products: Product[] = [];
 
   constructor(private productService: ProductService) { }
@@ -25,10 +27,14 @@ export class ListAllComponent implements OnInit {
   }
 
   productsInit() {
+    this.loading = !this.loading;
     this.productService.listAll()
-      .subscribe((products: Product[]) => {
-        this.products = products;
-      })
+    .subscribe((products: Product[]) => {
+      this.products = products;
+    }).add(() => {
+      this.loading = !this.loading;
+    })
+    
   }
 
   

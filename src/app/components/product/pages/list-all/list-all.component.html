@@ -10,7 +10,7 @@
 
 <div class="col-md-12 my-4">
     <div class="col-md-12">
-        <div class="card shadow">
+        <div class="card shadow"  *ngIf="!loading else loader">
             <div class="card-body">
                 <table class="table table-striped">
                     <thead>
@@ -45,3 +45,11 @@
     </div>
 </div>
 
+
+<ng-template #loader>
+    <div class="col-md-12 d-flex flex-column justify-content-center align-items-center">
+        <img src="assets/loading.gif" alt="" style="width: 50px; border-radius: 50%;" >
+        <span>Carregando...</span>
+
+    </div>
+</ng-template>
