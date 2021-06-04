@@ -18,7 +18,11 @@ export class CategoryService {
     return this.http.get<Category[]>(this.url);
   }
 
-  findById(productId: any): Observable<Product> {
-    return this.http.get<Product>(`${this.url}/${productId}`);
+  findById(categoryId: any): Observable<Product> {
+    return this.http.get<Product>(`${this.url}/${categoryId}`);
+  }
+
+  create(category: Category) {
+    return this.http.post<Category>(this.url, category);
   }
 }

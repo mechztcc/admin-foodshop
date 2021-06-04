@@ -7,16 +7,17 @@
             </h3>
             <hr>
 
-            <form>
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
                 <div class="form-group">
                     <label for="name">Nome da categoria</label>
-                    <input class="form-control" type="text" name="">
+                    <input class="form-control" type="text" name="" formControlName="name">
+                    <span *ngIf="form.controls.name.invalid && !form.controls.name.pristine" class="alert alert-danger my-2">Campo incorreto.</span>
                     <div class="col-md-12 d-flex justify-content-end my-2">
                         <a class="btn btn-danger mx-2" [routerLink]="[ '/categorias']">
                             <fa-icon [icon]="faChevronLeft"></fa-icon>
                             Voltar
                         </a>
-                        <button class="btn btn-primary" type="button">
+                        <button class="btn btn-primary" type="submit">
                             <fa-icon [icon]="faSave"></fa-icon>
                             Salvar
                         </button>
@@ -26,3 +27,4 @@
         </div>
     </div>
 </div>
+

@@ -7,6 +7,7 @@ import { ListAllComponent } from './pages/list-all/list-all.component';
 import { EditComponent } from './pages/edit/edit.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CreateComponent } from './pages/create/create.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -20,6 +21,8 @@ import { CreateComponent } from './pages/create/create.component';
     CommonModule,
     CategoryRoutingModule,
     FontAwesomeModule,
+    FormsModule,
+    ReactiveFormsModule
 
 
     

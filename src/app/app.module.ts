@@ -11,7 +11,7 @@ import { NotifierModule } from 'angular-notifier';
 import { HeaderComponent } from './components/template/header/header.component';
 import { FooterComponent } from './components/template/footer/footer.component';
 
-import { SpinnersAngularModule } from 'spinners-angular';
+
 
 
 
@@ -29,7 +29,7 @@ import { SpinnersAngularModule } from 'spinners-angular';
     NgbModule,
     HttpClientModule,
     NotifierModule,
-    // SpinnersAngularModule,
+    
 
 
   
