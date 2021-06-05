@@ -25,4 +25,5 @@ export class CategoryService {
   create(category: Category) {
     return this.http.post<Category>(this.url, category);
   }
+
 }

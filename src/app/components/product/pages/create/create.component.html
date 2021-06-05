@@ -1,0 +1,53 @@
+<div class="col-md-12 my-3">
+    <div class="card shadow">
+        <div class="card-body">
+            <h3 class="card-title">
+                Novo Produto
+                <fa-icon [icon]="faPlus"></fa-icon>
+            </h3>
+            <hr>
+
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for="name">Nome do produto</label>
+                    <input class="form-control" type="text" name="" formControlName="name">
+                    <span *ngIf="form.controls.name.invalid && !form.controls.name.pristine" class="alert alert-danger my-2">Campo incorreto.</span>
+                    
+                    <label for="price">Preço do produto</label>
+                    <input class="form-control" type="text" name="" formControlName="price">
+                    <span *ngIf="form.controls.price.invalid && !form.controls.price.pristine" class="alert alert-danger my-2">Campo incorreto.</span>
+                    
+                    
+                    <label for="name">Imagem do produto</label>
+                    <input class="form-control" type="text" name="" formControlName="img">
+                    <span *ngIf="form.controls.img.invalid && !form.controls.img.pristine" class="alert alert-danger my-2">Campo incorreto.</span>
+
+
+
+                    <div class="col-md-6 my-2">
+                        <div class="form-group">
+                            <label for="category">Categoria</label>
+                            <select id="category" class="form-control" formControlname="categoryId" #selected (change)="setCategory(selected.value)" >
+                                <option *ngFor="let category of categories" [value]="category.id">{{ category.name}}</option>
+
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-12 d-flex justify-content-end my-2">
+                        <a class="btn btn-danger mx-2" [routerLink]="[ '/produtos']">
+                            <fa-icon [icon]="faChevronLeft"></fa-icon>
+                            Voltar
+                        </a>
+                        <button class="btn btn-primary" type="submit">
+                            <fa-icon [icon]="faSave"></fa-icon>
+                            Salvar
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

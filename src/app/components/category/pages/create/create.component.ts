@@ -37,15 +37,12 @@ export class CreateComponent implements OnInit {
 
 
   onSubmit() {
-    
     if (this.form.valid) {
       this.categoryService.create(this.form.value)
         .subscribe({
           next: () => { this.notifierService.notify('success', `Categoria ${this.form.value.name} criada com sucesso!`) }
         }).add(() => { this.router.navigate(['/categorias'])})
     } else this.notifierService.notify('error', `Não foi possível concluir a operação.`) 
-    
-
   }
 
 }

@@ -3,7 +3,8 @@ import { Product } from 'src/app/components/category/shared/product';
 import { ProductService } from '../../shared/product.service';
 
 
-import { faPen, faTrash, } from '@fortawesome/free-solid-svg-icons';
+import { faPen, faTrash, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-all',
@@ -14,12 +15,13 @@ export class ListAllComponent implements OnInit {
 
   faPen = faPen;
   faTrash = faTrash;
+  faPlus = faPlus;
 
   loading: boolean = false;
 
   public products: Product[] = [];
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService, private router: Router) { }
 
   ngOnInit(): void {
     this.productsInit();
@@ -37,7 +39,9 @@ export class ListAllComponent implements OnInit {
     
   }
 
-  
+  toCreatePage() {
+    this.router.navigate(['produtos/criar'])
+  }
 
 
 }

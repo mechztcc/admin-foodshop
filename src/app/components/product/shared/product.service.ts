@@ -19,4 +19,8 @@ export class ProductService {
   findById(productId: number):Observable<Product> {
     return this.http.get<Product>(`${this.url}/${productId}`)
   }
+
+  create(product: Product): Observable<Product> {
+    return this.http.post<Product>(this.url, product);
+  }
 }
