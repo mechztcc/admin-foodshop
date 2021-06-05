@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
 
@@ -21,10 +22,11 @@ export class CreateComponent implements OnInit {
 
   public form: FormGroup;
 
-  constructor(private fb: FormBuilder, private categoryService: CategoryService, private router: Router, private notifierService: NotifierService) { }
+  constructor(private titleService: Title, private fb: FormBuilder, private categoryService: CategoryService, private router: Router, private notifierService: NotifierService) { }
 
   ngOnInit(): void {
     this.initForm();
+    this.setTitlePage();
   }
 
   initForm() {
@@ -45,4 +47,8 @@ export class CreateComponent implements OnInit {
     } else this.notifierService.notify('error', `Não foi possível concluir a operação.`) 
   }
 
+
+  setTitlePage() {
+    this.titleService.setTitle('Criando nova categoria')
+  }
 }

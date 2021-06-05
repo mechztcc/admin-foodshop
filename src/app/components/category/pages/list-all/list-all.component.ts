@@ -4,6 +4,7 @@ import { CategoryService } from '../../shared/category.service';
 
 import { faPen, faTrash, faPlus, faSpinner, faSync } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-list-all',
@@ -22,10 +23,11 @@ export class ListAllComponent implements OnInit {
 
   public categories: Category[] = []
 
-  constructor(private categoryService: CategoryService, private router: Router) { }
+  constructor(private titleService: Title, private categoryService: CategoryService, private router: Router) { }
 
   ngOnInit(): void {
     this.categoriesInit();
+    this.setTitlePage();
   }
 
   categoriesInit() {
@@ -46,4 +48,7 @@ export class ListAllComponent implements OnInit {
     this.router.navigate(['/categorias/criar'])
   }
 
+  setTitlePage() {
+    this.titleService.setTitle('Categorias')
+  }
 }

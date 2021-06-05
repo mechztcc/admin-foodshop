@@ -5,6 +5,7 @@ import { ProductService } from '../../shared/product.service';
 
 import { faPen, faTrash, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-list-all',
@@ -21,10 +22,11 @@ export class ListAllComponent implements OnInit {
 
   public products: Product[] = [];
 
-  constructor(private productService: ProductService, private router: Router) { }
+  constructor(private titleService: Title, private productService: ProductService, private router: Router) { }
 
   ngOnInit(): void {
     this.productsInit();
+    this.setTitlePage();
 
   }
 
@@ -43,5 +45,8 @@ export class ListAllComponent implements OnInit {
     this.router.navigate(['produtos/criar'])
   }
 
+  setTitlePage() {
+    this.titleService.setTitle('Produtos')
+  }
 
 }

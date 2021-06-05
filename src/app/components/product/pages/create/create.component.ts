@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { faPlus, faSave, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { NotifierService } from 'angular-notifier';
@@ -23,13 +24,15 @@ export class CreateComponent implements OnInit {
   public categories: Category[] = [];
   
 
-  constructor(private fb: FormBuilder, private productService: ProductService, private categoryService: CategoryService, private notifierService: NotifierService, private router: Router) { }
+  constructor(private titleService: Title, private fb: FormBuilder, private productService: ProductService, private categoryService: CategoryService, private notifierService: NotifierService, private router: Router) { }
 
   ngOnInit(): void {
     this.categoryService.listAll()
     .subscribe((categories: Category[]) => {
       this.categories = categories; 
     })
+
+    this.setTitlePage();
     this.initForm();
   }
 
@@ -61,6 +64,10 @@ export class CreateComponent implements OnInit {
 
   setCategory(value: string) {
     this.form.controls['categoryId'].setValue(value);
+  }
+
+  setTitlePage() {
+    this.titleService.setTitle('Criando novo produto')
   }
 }
 
