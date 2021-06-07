@@ -18,36 +18,42 @@
 <div class="col-md-12 my-4">
     <div class="col-md-12">
         <div class="card shadow" *ngIf="!loading else loader">
-            <div class="card-body" >
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Nome</th>
-                            <th>Total de Items</th>
-                            <th>Funções</th>
-                        </tr>
-                    </thead>
-                    <tbody  *ngFor="let category of categories">
-                        <tr>
-                            <td>{{ category.id }}</td>
-                            <td>{{ category.name }}</td>
-                            <td>{{ category.products.length }}</td>
-                            <td>
-                                <button class="btn btn-primary mx-3" type="button" (click)="edit(category.id)">
-                                    Editar
-                                    <fa-icon  [icon]="faPen"></fa-icon>
-                                </button>
-                                <button class="btn btn-danger" type="button">
-                                    Excluir
-                                    <fa-icon [icon]="faTrash"></fa-icon>
-                                </button>
-                            
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+           
+            <ng-container *ngIf="categories.length > 0 else empty">
+                <div class="card-body" >
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Nome</th>
+                                <th>Total de Items</th>
+                                <th>Funções</th>
+                            </tr>
+                        </thead>
+                        <tbody  *ngFor="let category of categories">
+                            <tr>
+                                <td>{{ category.id }}</td>
+                                <td>{{ category.name }}</td>
+                                <td>{{ category.products.length }}</td>
+                                <td>
+                                    <button class="btn btn-primary mx-3" type="button" (click)="edit(category.id)">
+                                        Editar
+                                        <fa-icon  [icon]="faPen"></fa-icon>
+                                    </button>
+                                    <button class="btn btn-danger" type="button" (click)="delete(category.id)">
+                                        Excluir
+                                        <fa-icon [icon]="faTrash"></fa-icon>
+                                    </button>
+                                
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </ng-container>
+            
+
+            
         </div>
     </div>
 </div>
@@ -61,4 +67,8 @@
         <span>Carregando...</span>
 
     </div>
+</ng-template>
+
+<ng-template #empty>
+    <h3>Empty component</h3>
 </ng-template>

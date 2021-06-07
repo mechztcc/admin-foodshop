@@ -18,12 +18,17 @@ export class CategoryService {
     return this.http.get<Category[]>(this.url);
   }
 
-  findById(categoryId: any): Observable<Product> {
-    return this.http.get<Product>(`${this.url}/${categoryId}`);
+  findById(categoryId: any): Observable<Category> {
+    return this.http.get<Category>(`${this.url}/${categoryId}`);
   }
 
   create(category: Category) {
     return this.http.post<Category>(this.url, category);
+  }
+
+
+  delete(id: number): Observable<Category> {
+    return this.http.delete<Category>(`${this.url}/${id}`)
   }
 
 }
