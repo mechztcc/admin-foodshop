@@ -16,11 +16,15 @@ export class ProductService {
     return this.http.get<Product[]>(this.url);
   }
 
-  findById(productId: number):Observable<Product> {
-    return this.http.get<Product>(`${this.url}/${productId}`)
+  findById(id: number):Observable<Product> {
+    return this.http.get<Product>(`${this.url}/${id}`)
   }
 
   create(product: Product): Observable<Product> {
     return this.http.post<Product>(this.url, product);
+  }
+
+  delete(id: number): Observable<Product> {
+    return this.http.delete<Product>(`${this.url}/${id}`);
   }
 }

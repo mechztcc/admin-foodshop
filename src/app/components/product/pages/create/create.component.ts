@@ -44,7 +44,7 @@ export class CreateComponent implements OnInit {
       ])],
       price: ['', Validators.required],
       img: ['', Validators.required],
-      categoryId: ['',]
+      categoryId: ['1',]
     })
   }
 
@@ -52,7 +52,9 @@ export class CreateComponent implements OnInit {
 
     let product: Product = this.form.value;
     product.id = null;
+
     console.log(product);
+    
     
     if (this.form.valid) {
       this.productService.create(product)
